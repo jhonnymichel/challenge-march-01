@@ -13,6 +13,9 @@ This is the challenge for march's first week. we must build a clock application 
 
 2) Once you're done, you can submit a pull request to the branch inside this repository. It's encouraged to submit pull requests once you finish a part of the app, instead of only showing it to us once you finish it all.
 
+## Deadline
+March 5th. So we have one entire week to develop the project.
+
 ## Challenge specific rules
 ### Javascript Only
 The solution must be done in client using javascript. it has to be an SPA.
