@@ -9,7 +9,7 @@ This is the challenge for march's first week. we must build a clock application 
 3) stopwatch (it's ok if you don't implement laps)
 
 ## How to participate
-1) Fork the branch width your name (https://github.com/potengijs/challenge-march-01/branches) to your personal github account (Don't fork it to this organization)
+1) Fork the branch with your name (https://github.com/potengijs/challenge-march-01/branches) to your personal github account (Don't fork it to this organization)
 
 2) Once you're done, you can submit a pull request to the branch inside this repository. It's encouraged to submit pull requests once you finish a part of the app, instead of only showing it to us once you finish it all.
 
