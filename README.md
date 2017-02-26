@@ -1,6 +1,6 @@
 # challenge-march-01: A Clock app!
 
-This is the challenge from march. we must build a clock application with three functions:
+This is the challenge for march. we must build a clock application with three functions:
 
 1) show time
 
