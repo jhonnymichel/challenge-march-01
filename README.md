@@ -25,7 +25,7 @@ It's ok to use lodash or underscore. Actually, why wouldn't one use one of these
 
 ## Stuff you can use, but we disencourage
 The reason is simple: They provide you some kind of built in structure to use, while when using pure JS, you have to think of it yourself. you will learn more this way.
-### MVC Framework
+### MVC Frameworks
 Angular, Angular 2, VUE, ~~Ember~~...
 ### View libraries
 React, Jquery, whatever.
@@ -34,6 +34,6 @@ React, Jquery, whatever.
 ### Make the app pretty and responsive. 
 use CSS libraries of any sort if you want. -- Unless the Challenge specific rules say the contrary
 ### Use ES6 or earlier.
-it doesn't matter if you use it without transpiling as long as it runs on the latest version of all browsers excluding internet explorer. Check compatibility table at http://www.caniuse.com or https://kangax.github.io/compat-table/es6/
+it doesn't matter if you use it without transpiling as long as it runs on the latest version of all browsers excluding internet explorer. Check compatibility at http://www.caniuse.com or https://kangax.github.io/compat-table/es6/
 
 
