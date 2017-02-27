@@ -6,7 +6,7 @@ const ticker = new Ticker({
 });
 
 document.body.onclick = function() {
-  ticker.start();
+  ticker.start(10);
 };
 
 function onFinished() {

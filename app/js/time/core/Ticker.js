@@ -1,4 +1,12 @@
+/**
+ * The Ticker Class is the core of all counters.
+ * it ticks every interval of miliseconds with precision
+ * */
 export default class Ticker {
+  /**
+   * create a new Ticker instance.
+   * @param {Object} config - the config containing tickInterval {number} and callback {function}
+   */
   constructor(config = { tickInterval: 1000 }) {
     this.tickInterval = config.tickInterval || 1000;
     this.callback = config.callback;
@@ -9,6 +17,10 @@ export default class Ticker {
     this.tick = this.tick.bind(this);
   }
 
+  /**
+   * start ticking.
+   * @param {number} amount - the amount of times it should tick. It defaults to 0. meaning it'll never stop ticking.
+   */
   start(amount = 0) {
     this.lastTickTimeStamp = Date.now() - this.tickInterval;
     this.lastDelay = 0;
