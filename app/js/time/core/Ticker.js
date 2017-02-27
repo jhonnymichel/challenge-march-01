@@ -29,7 +29,7 @@ export default class Ticker {
       if (this.callback) {
         this.callback();
       }
-      if (amount && currentTick >= amount) {
+      if (amount && this.currentTick >= amount) {
         return;
       }
       return this.tick(amount);
