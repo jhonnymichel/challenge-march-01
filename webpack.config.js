@@ -10,8 +10,8 @@ var htmlTemplates = {
 module.exports = {
   entry: "./app/index.js",
   output: {
-    filename: "/js/bundle.js",
-    path: path.resolve(__dirname, "dist")
+    filename: "bundle.js",
+    path: path.resolve(__dirname, "dist"),
   },
   module: {
     rules: [
