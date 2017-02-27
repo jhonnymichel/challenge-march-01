@@ -19,11 +19,18 @@ module.exports = {
         test: /\.js$/,
         use: [
           {
-            loader: 'babel-loader',
-            query: { presets: ['es2015', 'stage-2'] }
+            loader: "babel-loader",
+            query: { 
+              presets: [
+                ["es2015", {"modules": false}], "stage-2"
+              ] 
+            }
           }
         ]
       }
     ]
-  }
+  },
+  plugins: [
+    new HtmlWebpackPlugin(htmlTemplates.index)
+  ]
 };
