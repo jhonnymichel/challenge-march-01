@@ -12,6 +12,8 @@ export default class Ticker {
   start(amount = 0) {
     this.lastTickTimeStamp = Date.now() - this.tickInterval;
     this.lastDelay = 0;
+    this.delta = 0;
+    this.currentTick = 0;
     this.tick(amount);
   }
 
@@ -28,7 +30,7 @@ export default class Ticker {
         this.callback();
       }
       if (amount && currentTick >= amount) {
-        return this.reset();
+        return;
       }
       return this.tick(amount);
     }, this.tickInterval + this.getDelay());
@@ -41,11 +43,5 @@ export default class Ticker {
     const delay = this.tickInterval + this.lastDelay - delta;
     this.lastDelay = this.tickInterval - delta;
     return delay;
-  }
-
-  reset() {
-    this.delta = 0;
-    this.currentTick = 0;
-    this.isCounting = false;
   }
 }
