@@ -28,13 +28,13 @@ export default class Ticker {
     this.timeout = setTimeout( _ => {
       this.isCounting = false;
       this.currentTick++;
-      if (this.callback) {
-        this.callback();
-      }
       if (amount && this.currentTick >= amount) {
+        if (this.callback) {
+          this.callback();
+        }
         return;
       }
-      return this.tick(amount);
+      this.tick(amount);
     }, this.tickInterval + this.getDelay());
     this.lastTickTimeStamp = Date.now();
   }

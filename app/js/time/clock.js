@@ -4,19 +4,25 @@ export default class Clock extends Ticker {
   constructor() {
     super();
     this.date = new Date();
-    const time = {
-      hours: this.date.getHours(),
-      minutes: this.date.getMinutes(),
-      seconds: this.date.getSeconds(),
-      miliseconds: this.date.getMilliseconds()
-    };
-    this.start(0, 1000, this.onTick);
+    console.log(this.date);
+    this.onFirstTick = this.onFirstTick.bind(this);
+    this.setupNextMinute = this.setupNextMinute.bind(this);
+    this.runFirstSecond();
   }
 
-  onTick(tick) {
-    console.log('tick');
-    if (this.currentTick >= this.tickInterval) {
-      console.log('it has actually finished lol');
-    }
+  runFirstSecond() {
+    const milisecondsRestingToNextSecond = 1000 - this.date.getMilliseconds();
+    this.start(1, milisecondsRestingToNextSecond, this.onFirstTick);
+  }
+
+  onFirstTick() {
+    const secondsRestingToNextMinute = 59 - this.date.getSeconds();
+    this.start(secondsRestingToNextMinute, 1000, this.setupNextMinute);
+  }
+
+  setupNextMinute() {
+    this.date = new Date();
+    console.log(this.date);
+    this.start(60, 1000, this.setupNextMinute);
   }
 }
