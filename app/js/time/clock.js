@@ -3,10 +3,19 @@ import Ticker from './core/Ticker.js';
 export default class Clock extends Ticker {
   constructor() {
     super();
-    this.date = new Date();
-    console.log(this.date);
     this.onFirstTick = this.onFirstTick.bind(this);
     this.setupNextMinute = this.setupNextMinute.bind(this);
+    document.addEventListener('visibilitychange',
+      this.onVisibilityChange.bind(this));
+    this.catchUp();
+  }
+
+  catchUp() {
+    if (this.isCounting) {
+      this.stop();
+    }
+    this.date = new Date();
+    console.log(this.date);
     this.runFirstSecond();
   }
 
@@ -24,5 +33,11 @@ export default class Clock extends Ticker {
     this.date = new Date();
     console.log(this.date);
     this.start(60, 1000, this.setupNextMinute);
+  }
+
+  onVisibilityChange(e) {
+    if (e.target.visibilityState === 'visible') {
+      this.catchUp();
+    }
   }
 }
