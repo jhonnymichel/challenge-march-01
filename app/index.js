@@ -2,10 +2,10 @@ import Clock from './js/time/clock.js';
 import Stopwatch from './js/time/stopwatch.js';
 
 // const clock = new Clock(onCycle);
-const stopwatch = new Stopwatch(onStopwatchCycle);
+window. stopwatch = new Stopwatch(onStopwatchCycle);
 
 document.body.onclick = function() {
-  stopwatch.count();
+  stopwatch.run();
 };
 
 function onStopwatchCycle(time) {
