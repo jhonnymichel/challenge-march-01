@@ -5,8 +5,21 @@ export default class Stopwatch extends Ticker {
     super();
     this.cycleCallback = cycleCallback;
     this.onTickCompleted = this.onTickCompleted.bind(this);
+    this.onVisibilityChange = this.onVisibilityChange.bind(this);
     this.isPaused = false;
     this.isRunning = false;
+  }
+
+  catchUp() {
+    if (this.isCounting) {
+      this.stop();
+    }
+    if (this.cycleCallback) {
+      this.cycleCallback(this.formatStopwatchString(Date.now()));
+    }
+    if (this.isRunning && !this.isPaused) {
+      this.cycle();
+    }
   }
 
   run() {
@@ -16,6 +29,8 @@ export default class Stopwatch extends Ticker {
     this.isRunning = true;
     this.initialTime = Date.now();
     this.cycle();
+    document.addEventListener('visibilityChange',
+      this.onVisibilityChange);
   }
 
   togglePause() {
@@ -95,5 +110,15 @@ export default class Stopwatch extends Ticker {
     return {
       minutes, seconds, miliseconds,
     };
+  }
+
+  onVisibilityChange(e) {
+    if (e.target.visibilityState === 'visible') {
+      this.catchUp();
+    } else {
+      if (this.isCounting) {
+        this.stop();
+      }
+    }
   }
 }
