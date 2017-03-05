@@ -35,7 +35,7 @@ export default class Ticker {
         return;
       }
       this.tick(amount);
-    }, this.tickInterval + this.getDelay());
+    }, Math.max(0, this.tickInterval + this.getDelay()));
     this.lastTickTimeStamp = Date.now();
   }
 
@@ -44,6 +44,6 @@ export default class Ticker {
     const delta = now - this.lastTickTimeStamp;
     const delay = this.tickInterval + this.lastDelay - delta;
     this.lastDelay = this.tickInterval - delta;
-    return Math.max(0, delay);
+    return delay;
   }
 }
