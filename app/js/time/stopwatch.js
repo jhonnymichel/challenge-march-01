@@ -10,6 +10,9 @@ export default class Stopwatch extends Ticker {
   }
 
   run() {
+    if (this.isRunning) {
+      return console.error('can\'t start a run');
+    }
     this.isRunning = true;
     this.initialTime = Date.now();
     this.cycle();
@@ -67,10 +70,24 @@ export default class Stopwatch extends Ticker {
     }
     this.cycle();
   }
-
+  formatTwoDigits(number) {
+    return number > 9 ? number : '0'.concat(number);
+  }
   formatStopwatchString(currentTime) {
     const pastTime = currentTime - this.initialTime;
-    const pastSeconds = pastTime / 1000;
-    return pastSeconds;
+    const minutesNumber = Math.floor(pastTime / 1000 / 60);
+    const minutes = this.formatTwoDigits(minutesNumber);
+    const seconds = this.formatTwoDigits(Math.floor(pastTime / 1000));
+    let miliseconds = (pastTime / 1000)
+      .toString()
+      .split('.')[1];
+    if (miliseconds) {
+      miliseconds = miliseconds.substring(0, 2);
+    } else {
+      miliseconds = '00';
+    }
+    return {
+      minutes, seconds, miliseconds,
+    };
   }
 }

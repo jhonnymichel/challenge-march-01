@@ -9,7 +9,7 @@ document.body.onclick = function() {
 };
 
 function onStopwatchCycle(time) {
-  document.body.innerHTML = String(time).substring(0, 5);
+  document.body.innerHTML = `${time.minutes}:${time.seconds}:${time.miliseconds}`;
 }
 
 
