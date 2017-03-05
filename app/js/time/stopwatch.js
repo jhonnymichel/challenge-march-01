@@ -38,10 +38,16 @@ export default class Stopwatch extends Ticker {
   }
 
   reset() {
+    document.removeEventListener('visibilityChange',
+      this.onVisibilityChange);
     this.isRunning = false;
     this.stop();
     if (this.cycleCallback) {
-      this.cycleCallback(0);
+      this.cycleCallback({
+        minutes: '00',
+        seconds: '00',
+        miliseconds: '00',
+      });
     }
   }
 
@@ -77,7 +83,7 @@ export default class Stopwatch extends Ticker {
     const pastTime = currentTime - this.initialTime;
     const minutesNumber = Math.floor(pastTime / 1000 / 60);
     const minutes = this.formatTwoDigits(minutesNumber);
-    const seconds = this.formatTwoDigits(Math.floor(pastTime / 1000));
+    const seconds = this.formatTwoDigits(Math.floor(pastTime / 1000 - (60 * minutesNumber)));
     let miliseconds = (pastTime / 1000)
       .toString()
       .split('.')[1];
